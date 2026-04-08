@@ -24,7 +24,7 @@ export default function Page() {
   }, []);
 
   return (
-    <div style={{ background: dark ? "#0b0b0f" : "#fafbfe", minHeight: "100vh", transition: "background 0.4s" }}>
+    <main style={{ background: dark ? "#0b0b0f" : "#fafbfe", minHeight: "100vh", transition: "background 0.4s" }}>
       <ParticleCanvas dark={dark} />
       <FilmGrain dark={dark} />
       <StickyNav dark={dark} setDark={setDark} scrolled={scrolled} />
@@ -39,6 +39,6 @@ export default function Page() {
       <Security key={dark ? "sc-d" : "sc-l"} dark={dark} />
       <CTA key={dark ? "ct-d" : "ct-l"} dark={dark} />
       <Footer key={dark ? "ft-d" : "ft-l"} dark={dark} />
-    </div>
+    </main>
   );
 }

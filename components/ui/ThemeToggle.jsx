@@ -2,7 +2,7 @@
 
 export function ThemeToggle({ dark, setDark }) {
   return (
-    <button onClick={() => setDark(!dark)} style={{
+    <button aria-label={dark ? "Switch to light mode" : "Switch to dark mode"} onClick={() => setDark(!dark)} style={{
       width: 36, height: 36, borderRadius: 9, border: "none", cursor: "pointer",
       background: dark ? "rgba(255,255,255,0.06)" : "rgba(255,255,255,0.8)",
       boxShadow: dark ? "0 2px 8px rgba(0,0,0,0.3)" : "0 2px 8px rgba(0,0,0,0.04)",
