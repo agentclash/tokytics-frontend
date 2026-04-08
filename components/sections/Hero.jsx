@@ -27,7 +27,7 @@ function DashboardPreview({ dark }) {
   const peak = Math.max(...bars), peakIdx = bars.indexOf(peak);
 
   return (
-    <div style={{ perspective: "1600px", maxWidth: 780, margin: "0 auto", position: "relative" }}>
+    <div className="dashboard-preview" style={{ perspective: "1600px", maxWidth: 780, margin: "0 auto", position: "relative" }}>
       <div style={{
         transform: "rotateX(3deg)", transformOrigin: "center 85%", borderRadius: 14,
         background: dark ? "rgba(14,14,20,0.9)" : "#ffffff",

@@ -10,13 +10,14 @@ body {
   font-family: 'IBM Plex Sans', -apple-system, BlinkMacSystemFont, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
 }
 
 /* ═══════════════════════════════════════════
    Keyframes & Interactions
    ═══════════════════════════════════════════ */
 
-html { scroll-behavior: smooth; }
+html { scroll-behavior: smooth; overflow-x: hidden; }
 
 /* Hero */
 @keyframes fi { from { opacity: 0; } to { opacity: 1; } }
@@ -98,6 +99,7 @@ html { scroll-behavior: smooth; }
   .nav-bar { padding: 0 16px !important; }
 
   /* Hero */
+  .dashboard-preview { transform: scale(0.52) !important; transform-origin: top center !important; margin-bottom: -280px !important; }
   .hero-heading { font-size: 34px !important; max-width: 100% !important; }
   .hero-sub { font-size: 15px !important; }
   .hero-buttons { gap: 10px !important; }
