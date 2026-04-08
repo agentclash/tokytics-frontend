@@ -123,15 +123,15 @@ export function Footer({ dark }) {
   ];
 
   return (
-    <footer ref={ref} style={{ padding: "0 32px 0", maxWidth: 1080, margin: "0 auto", fontFamily: "'IBM Plex Sans', -apple-system, sans-serif" }}>
+    <footer ref={ref} className="section-pad" style={{ padding: "0 32px 0", maxWidth: 1080, margin: "0 auto", fontFamily: "'IBM Plex Sans', -apple-system, sans-serif" }}>
       {/* Divider */}
       <div style={{ height: 1, position: "relative", marginBottom: 64, overflow: "hidden", background: dark ? "rgba(255,255,255,0.04)" : "rgba(0,0,0,0.06)" }}>
         <div style={{ position: "absolute", top: 0, left: 0, height: "100%", width: "30%", background: dark ? "linear-gradient(90deg, transparent, rgba(255,255,255,0.15), transparent)" : "linear-gradient(90deg, transparent, rgba(0,0,0,0.12), transparent)", animation: visible ? "ftSweep 4s ease-in-out infinite" : "none" }} />
       </div>
 
       {/* Main content */}
-      <div style={{ display: "flex", justifyContent: "space-between", gap: 48, marginBottom: 48 }}>
-        <div style={{ flex: "0 0 280px", opacity: visible ? 1 : 0, transform: visible ? "translateY(0)" : "translateY(16px)", transition: "all 0.7s cubic-bezier(0.16,1,0.3,1) 0.15s" }}>
+      <div className="footer-main" style={{ display: "flex", justifyContent: "space-between", gap: 48, marginBottom: 48 }}>
+        <div className="footer-brand" style={{ flex: "0 0 280px", opacity: visible ? 1 : 0, transform: visible ? "translateY(0)" : "translateY(16px)", transition: "all 0.7s cubic-bezier(0.16,1,0.3,1) 0.15s" }}>
           <AnimatedLogo dark={dark} visible={visible} />
           <div style={{ marginTop: 18, marginBottom: 14 }}>
             <span style={{ fontSize: 18, fontWeight: 660, letterSpacing: "-0.02em", color: dark ? "rgba(255,255,255,0.8)" : "#000" }}>Tokytics</span>
@@ -142,7 +142,7 @@ export function Footer({ dark }) {
           <StatusBadge dark={dark} visible={visible} />
         </div>
 
-        <div style={{ display: "flex", gap: 40, flex: 1, justifyContent: "flex-end" }}>
+        <div className="footer-links" style={{ display: "flex", gap: 40, flex: 1, justifyContent: "flex-end" }}>
           {linkCols.map((col, ci) => (
             <div key={ci} style={{ minWidth: 100, opacity: visible ? 1 : 0, transform: visible ? "translateY(0)" : "translateY(16px)", transition: `all 0.6s cubic-bezier(0.16,1,0.3,1) ${0.25 + ci * 0.08}s` }}>
               <div style={{ fontSize: 10, fontWeight: 600, textTransform: "uppercase", letterSpacing: "0.07em", color: dark ? "rgba(255,255,255,0.2)" : "rgba(0,0,0,0.25)", fontFamily: "'IBM Plex Mono', monospace", marginBottom: 16 }}>{col.title}</div>
@@ -160,7 +160,7 @@ export function Footer({ dark }) {
       {/* Bottom */}
       <div style={{ paddingTop: 24, borderTop: `1px solid ${dark ? "rgba(255,255,255,0.03)" : "rgba(0,0,0,0.04)"}` }}>
         <FooterStream dark={dark} visible={visible} />
-        <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", padding: "20px 0 32px" }}>
+        <div className="footer-bottom" style={{ display: "flex", justifyContent: "space-between", alignItems: "center", padding: "20px 0 32px" }}>
           <span style={{ fontSize: 11, fontFamily: "'IBM Plex Mono', monospace", color: dark ? "rgba(255,255,255,0.15)" : "rgba(0,0,0,0.25)" }}>
             © 2025 Tokytics Inc. All rights reserved.
           </span>

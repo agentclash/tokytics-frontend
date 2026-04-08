@@ -7,21 +7,26 @@ export function FilmGrain({ dark }) {
     const canvas = canvasRef.current;
     if (!canvas) return;
     const ctx = canvas.getContext("2d");
-    canvas.width = 256;
-    canvas.height = 256;
+    canvas.width = 128;
+    canvas.height = 128;
+    const imageData = ctx.createImageData(128, 128);
+    const data = imageData.data;
+    let animId;
+    let last = 0;
 
-    const draw = () => {
-      const imageData = ctx.createImageData(256, 256);
-      const data = imageData.data;
+    const draw = (now) => {
+      animId = requestAnimationFrame(draw);
+      if (now - last < 250) return; // ~4fps
+      last = now;
       for (let i = 0; i < data.length; i += 4) {
         const v = Math.random() * 255;
         data[i] = data[i + 1] = data[i + 2] = v;
         data[i + 3] = dark ? 6 : 4;
       }
       ctx.putImageData(imageData, 0, 0);
-      requestAnimationFrame(draw);
     };
-    draw();
+    animId = requestAnimationFrame(draw);
+    return () => cancelAnimationFrame(animId);
   }, [dark]);
 
   return (

@@ -182,10 +182,10 @@ export function Security({ dark }) {
   const [ref, visible] = useInView(0.08);
 
   return (
-    <section ref={ref} style={{ padding: "100px 32px 80px", maxWidth: 1080, margin: "0 auto", fontFamily: "'IBM Plex Sans', -apple-system, sans-serif" }}>
+    <section ref={ref} className="section-pad" style={{ padding: "100px 32px 80px", maxWidth: 1080, margin: "0 auto", fontFamily: "'IBM Plex Sans', -apple-system, sans-serif" }}>
       <div style={{ textAlign: "center", marginBottom: 64 }}>
         <div style={{ display: "inline-flex", padding: "5px 14px", borderRadius: 100, background: dark ? "rgba(255,255,255,0.03)" : "rgba(0,0,0,0.04)", border: `1px solid ${dark ? "rgba(255,255,255,0.05)" : "rgba(0,0,0,0.06)"}`, fontSize: 11.5, fontWeight: 500, color: dark ? "rgba(255,255,255,0.35)" : "rgba(0,0,0,0.5)", fontFamily: "'IBM Plex Mono', monospace", marginBottom: 22, opacity: visible ? 1 : 0, transition: "all 0.6s ease 0.1s" }}>Security</div>
-        <h2 style={{ fontSize: 42, fontWeight: 720, letterSpacing: "-0.04em", color: dark ? "rgba(255,255,255,0.95)" : "#000", margin: "0 0 16px", lineHeight: 1.06, opacity: visible ? 1 : 0, transform: visible ? "translateY(0)" : "translateY(16px)", transition: "all 0.7s cubic-bezier(0.16,1,0.3,1) 0.15s" }}>
+        <h2 className="section-heading" style={{ fontSize: 42, fontWeight: 720, letterSpacing: "-0.04em", color: dark ? "rgba(255,255,255,0.95)" : "#000", margin: "0 0 16px", lineHeight: 1.06, opacity: visible ? 1 : 0, transform: visible ? "translateY(0)" : "translateY(16px)", transition: "all 0.7s cubic-bezier(0.16,1,0.3,1) 0.15s" }}>
           Your keys never<br />touch disk.
         </h2>
         <p style={{ fontSize: 16, color: dark ? "rgba(255,255,255,0.38)" : "rgba(0,0,0,0.5)", maxWidth: 420, margin: "0 auto", lineHeight: 1.6, opacity: visible ? 1 : 0, transition: "opacity 0.6s ease 0.3s" }}>
@@ -193,7 +193,7 @@ export function Security({ dark }) {
         </p>
       </div>
 
-      <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1fr", gap: 12, marginBottom: 48 }}>
+      <div className="security-grid" style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1fr", gap: 12, marginBottom: 48 }}>
         {/* Card 1: Key Flow */}
         <div style={{ borderRadius: 16, overflow: "hidden", background: dark ? "linear-gradient(180deg, rgba(255,255,255,0.02) 0%, rgba(255,255,255,0.008) 100%)" : "#ffffff", border: `1px solid ${dark ? "rgba(255,255,255,0.04)" : "rgba(0,0,0,0.08)"}`, opacity: visible ? 1 : 0, transform: visible ? "translateY(0)" : "translateY(24px)", transition: "all 0.7s cubic-bezier(0.16,1,0.3,1) 0.25s" }}>
           <div style={{ margin: "12px 12px 0", borderRadius: 10, padding: "20px 16px", background: dark ? "rgba(255,255,255,0.012)" : "#f6f7fb", border: `1px solid ${dark ? "rgba(255,255,255,0.025)" : "rgba(0,0,0,0.04)"}` }}>
@@ -243,7 +243,7 @@ export function Security({ dark }) {
       </div>
 
       {/* Trust badges */}
-      <div style={{ display: "flex", justifyContent: "center", gap: 32, padding: "28px 0", borderTop: `1px solid ${dark ? "rgba(255,255,255,0.04)" : "rgba(0,0,0,0.06)"}` }}>
+      <div className="trust-badges" style={{ display: "flex", justifyContent: "center", gap: 32, padding: "28px 0", borderTop: `1px solid ${dark ? "rgba(255,255,255,0.04)" : "rgba(0,0,0,0.06)"}` }}>
         {[
           { icon: "M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z", label: "AES-256" },
           { icon: "M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z", label: "SOC 2" },

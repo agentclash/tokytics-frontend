@@ -21,7 +21,8 @@ export function ParticleCanvas({ dark }) {
     };
     resize();
 
-    const count = 60;
+    const isMobile = window.innerWidth < 768;
+    const count = isMobile ? 25 : 45;
     particles.current = Array.from({ length: count }, () => ({
       x: Math.random() * dims.current.w,
       y: Math.random() * dims.current.h * 4,
@@ -64,24 +65,6 @@ export function ParticleCanvas({ dark }) {
           ? `rgba(255,255,255,${p.opacity * (1 + Math.sin(t + p.phase) * 0.3)})`
           : `rgba(0,0,0,${p.opacity * 0.7 * (1 + Math.sin(t + p.phase) * 0.3)})`;
         ctx.fill();
-
-        particles.current.forEach(p2 => {
-          if (p === p2) return;
-          const sy2 = ((p2.y - sy * (0.3 + p2.r * 0.1)) % (h * 1.5)) + h * 0.25;
-          const px2 = p2.x + Math.sin(t * 0.3 + p2.phase) * 8;
-          const sx2 = ((px2 % w) + w) % w;
-          const d = Math.sqrt((finalX - sx2) ** 2 + (finalY - sy2) ** 2);
-          if (d < 80 && d > 0) {
-            ctx.beginPath();
-            ctx.moveTo(finalX, finalY);
-            ctx.lineTo(sx2, sy2);
-            ctx.strokeStyle = dark
-              ? `rgba(255,255,255,${0.015 * (1 - d / 80)})`
-              : `rgba(0,0,0,${0.012 * (1 - d / 80)})`;
-            ctx.lineWidth = 0.5;
-            ctx.stroke();
-          }
-        });
       });
 
       animId = requestAnimationFrame(draw);

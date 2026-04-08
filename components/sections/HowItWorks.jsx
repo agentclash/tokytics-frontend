@@ -5,7 +5,7 @@ import { useInView } from "../../hooks";
 function FlowingPipeline({ dark, visible }) {
   const pathD = "M80,30 C80,120 520,120 520,210 C520,300 80,300 80,390 C80,480 520,480 520,570 C520,660 80,660 80,750";
   return (
-    <svg width="600" height="780" viewBox="0 0 600 780" style={{ position: "absolute", left: "50%", top: 20, transform: "translateX(-50%)", pointerEvents: "none", zIndex: 0 }}>
+    <svg className="hiw-pipeline" width="600" height="780" viewBox="0 0 600 780" style={{ position: "absolute", left: "50%", top: 20, transform: "translateX(-50%)", pointerEvents: "none", zIndex: 0 }}>
       <defs>
         <filter id="nodeGlow"><feGaussianBlur stdDeviation="8" /></filter>
         <filter id="innerGlow" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur in="SourceGraphic" stdDeviation="3" result="b1" /><feGaussianBlur in="SourceGraphic" stdDeviation="1.5" result="b2" /><feMerge><feMergeNode in="b1" /><feMergeNode in="b2" /><feMergeNode in="SourceGraphic" /></feMerge></filter>
@@ -34,8 +34,8 @@ function FlowingPipeline({ dark, visible }) {
 function HIWStep({ num, title, desc, children, dark, visible, delay, align }) {
   const isLeft = align === "left";
   return (
-    <div style={{ display: "flex", alignItems: "center", flexDirection: isLeft?"row":"row-reverse", position: "relative", zIndex: 2, height: 180 }}>
-      <div style={{ width: "42%", opacity: visible?1:0, transform: visible?"translateX(0)":`translateX(${isLeft?"-40px":"40px"})`, transition: `all 0.8s cubic-bezier(0.16,1,0.3,1) ${delay}s` }}>
+    <div className="hiw-step" style={{ display: "flex", alignItems: "center", flexDirection: isLeft?"row":"row-reverse", position: "relative", zIndex: 2, height: 180 }}>
+      <div className="hiw-step-text" style={{ width: "42%", opacity: visible?1:0, transform: visible?"translateX(0)":`translateX(${isLeft?"-40px":"40px"})`, transition: `all 0.8s cubic-bezier(0.16,1,0.3,1) ${delay}s` }}>
         <div style={{ position: "relative" }}>
           <span style={{ position: "absolute", top: -36, [isLeft?"right":"left"]: -12, fontSize: 84, fontWeight: 800, letterSpacing: "-0.06em", color: dark?"rgba(255,255,255,0.04)":"rgba(0,0,0,0.08)", fontFamily: "'IBM Plex Sans'", lineHeight: 1, pointerEvents: "none", userSelect: "none" }}>{num}</span>
           <div style={{ fontSize: 9.5, fontWeight: 600, fontFamily: "'IBM Plex Mono', monospace", color: dark?"rgba(255,255,255,0.3)":"rgba(0,0,0,0.35)", marginBottom: 8, letterSpacing: "0.06em" }}>STEP {num}</div>
@@ -43,8 +43,8 @@ function HIWStep({ num, title, desc, children, dark, visible, delay, align }) {
           <p style={{ fontSize: 13.5, lineHeight: 1.55, color: dark?"rgba(255,255,255,0.38)":"rgba(0,0,0,0.5)", margin: 0 }}>{desc}</p>
         </div>
       </div>
-      <div style={{ width: "16%" }} />
-      <div style={{ width: "42%", opacity: visible?1:0, transform: visible?"translateX(0) scale(1)":`translateX(${isLeft?"30px":"-30px"}) scale(0.95)`, transition: `all 0.8s cubic-bezier(0.16,1,0.3,1) ${delay+0.15}s` }}>
+      <div className="hiw-spacer" style={{ width: "16%" }} />
+      <div className="hiw-step-viz" style={{ width: "42%", opacity: visible?1:0, transform: visible?"translateX(0) scale(1)":`translateX(${isLeft?"30px":"-30px"}) scale(0.95)`, transition: `all 0.8s cubic-bezier(0.16,1,0.3,1) ${delay+0.15}s` }}>
         <div style={{ borderRadius: 14, padding: "22px 20px", background: dark?"linear-gradient(135deg, rgba(255,255,255,0.03) 0%, rgba(255,255,255,0.01) 100%)":"linear-gradient(135deg, rgba(255,255,255,0.55) 0%, rgba(255,255,255,0.35) 100%)", border: `1px solid ${dark?"rgba(255,255,255,0.05)":"rgba(255,255,255,0.5)"}`, backdropFilter: "blur(12px)", boxShadow: dark?"inset 0 1px 0 rgba(255,255,255,0.04)":"inset 0 1px 0 rgba(255,255,255,0.7), 0 4px 16px rgba(0,0,0,0.04)" }}>{children}</div>
       </div>
     </div>
@@ -98,13 +98,13 @@ function HIWDash({ dark, visible }) {
 export function HowItWorks({ dark }) {
   const [ref, visible] = useInView(0.08);
   return (
-    <section ref={ref} style={{ padding: "100px 32px 100px", maxWidth: 1020, margin: "0 auto", fontFamily: "'IBM Plex Sans', -apple-system, sans-serif" }}>
+    <section ref={ref} className="section-pad" style={{ padding: "100px 32px 100px", maxWidth: 1020, margin: "0 auto", fontFamily: "'IBM Plex Sans', -apple-system, sans-serif" }}>
       <div style={{ textAlign: "center", marginBottom: 80 }}>
         <div style={{ display: "inline-flex", padding: "5px 14px", borderRadius: 100, background: dark?"rgba(255,255,255,0.03)":"rgba(0,0,0,0.04)", border: `1px solid ${dark?"rgba(255,255,255,0.05)":"rgba(0,0,0,0.06)"}`, fontSize: 11.5, fontWeight: 500, color: dark?"rgba(255,255,255,0.35)":"rgba(0,0,0,0.5)", fontFamily: "'IBM Plex Mono', monospace", marginBottom: 22, opacity: visible?1:0, transform: visible?"translateY(0)":"translateY(12px)", transition: "all 0.6s ease 0.1s" }}>How it works</div>
-        <h2 style={{ fontSize: 42, fontWeight: 720, letterSpacing: "-0.04em", color: dark?"rgba(255,255,255,0.95)":"#000", margin: "0 0 18px", lineHeight: 1.06, opacity: visible?1:0, transition: "all 0.7s cubic-bezier(0.16,1,0.3,1) 0.15s" }}>One proxy.<br />Full visibility.</h2>
+        <h2 className="section-heading" style={{ fontSize: 42, fontWeight: 720, letterSpacing: "-0.04em", color: dark?"rgba(255,255,255,0.95)":"#000", margin: "0 0 18px", lineHeight: 1.06, opacity: visible?1:0, transition: "all 0.7s cubic-bezier(0.16,1,0.3,1) 0.15s" }}>One proxy.<br />Full visibility.</h2>
         <p style={{ fontSize: 16, color: dark?"rgba(255,255,255,0.38)":"rgba(0,0,0,0.5)", maxWidth: 380, margin: "0 auto", lineHeight: 1.6, opacity: visible?1:0, transition: "opacity 0.6s ease 0.3s" }}>Point your LLM calls at our proxy. We handle caching, budgets, logging, and analytics.</p>
       </div>
-      <div style={{ position: "relative", minHeight: 800, marginBottom: 40 }}>
+      <div className="hiw-container" style={{ position: "relative", minHeight: 800, marginBottom: 40 }}>
         <FlowingPipeline dark={dark} visible={visible} />
         <div style={{ position: "relative", zIndex: 2, display: "flex", flexDirection: "column" }}>
           <HIWStep num="01" title="Your app calls our proxy" desc="Swap your base URL. OpenAI, Anthropic, Google — all work. Zero SDK changes." dark={dark} visible={visible} delay={0.3} align="left"><HIWCode dark={dark} visible={visible} /></HIWStep>

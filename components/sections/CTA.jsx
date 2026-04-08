@@ -94,7 +94,7 @@ export function CTA({ dark }) {
   const reqCount = useCounterVis(10000, 1800, 1000, visible);
   return (
     <section ref={ref} style={{ padding: "60px 32px 80px", maxWidth: 1080, margin: "0 auto", fontFamily: "'IBM Plex Sans', -apple-system, sans-serif" }}>
-      <div style={{
+      <div className="cta-inner" style={{
         borderRadius: 28, padding: "80px 48px 72px", position: "relative", overflow: "hidden", minHeight: 560,
         background: dark ? "linear-gradient(180deg, rgba(255,255,255,0.018) 0%, rgba(255,255,255,0.005) 100%)" : "linear-gradient(180deg, rgba(255,255,255,0.5) 0%, rgba(255,255,255,0.2) 100%)",
         border: `1px solid ${dark ? "rgba(255,255,255,0.04)" : "rgba(0,0,0,0.06)"}`,
@@ -108,15 +108,15 @@ export function CTA({ dark }) {
             <div style={{ width: 6, height: 6, borderRadius: "50%", background: dark ? "rgba(255,255,255,0.4)" : "rgba(0,0,0,0.4)", animation: visible ? "ctaPulse 2s infinite" : "none" }} />
             <span style={{ fontSize: 11, color: dark ? "rgba(255,255,255,0.4)" : "rgba(0,0,0,0.5)" }}>Free tier: <span style={{ color: dark ? "rgba(255,255,255,0.7)" : "#000", fontWeight: 600 }}>{reqCount.toLocaleString()}</span> req/mo</span>
           </div>
-          <h2 style={{ fontSize: 48, fontWeight: 760, letterSpacing: "-0.05em", color: dark ? "rgba(255,255,255,0.95)" : "#000", margin: "0 0 8px", lineHeight: 1.04, opacity: visible ? 1 : 0, transform: visible ? "translateY(0)" : "translateY(24px)", transition: "all 0.8s cubic-bezier(0.16,1,0.3,1) 0.4s" }}>Start saving on</h2>
-          <h2 style={{ fontSize: 48, fontWeight: 760, letterSpacing: "-0.05em", color: dark ? "rgba(255,255,255,0.95)" : "#000", margin: "0 0 14px", lineHeight: 1.04, opacity: visible ? 1 : 0, transform: visible ? "translateY(0)" : "translateY(24px)", transition: "all 0.8s cubic-bezier(0.16,1,0.3,1) 0.5s" }}>LLM costs today.</h2>
+          <h2 className="cta-heading" style={{ fontSize: 48, fontWeight: 760, letterSpacing: "-0.05em", color: dark ? "rgba(255,255,255,0.95)" : "#000", margin: "0 0 8px", lineHeight: 1.04, opacity: visible ? 1 : 0, transform: visible ? "translateY(0)" : "translateY(24px)", transition: "all 0.8s cubic-bezier(0.16,1,0.3,1) 0.4s" }}>Start saving on</h2>
+          <h2 className="cta-heading" style={{ fontSize: 48, fontWeight: 760, letterSpacing: "-0.05em", color: dark ? "rgba(255,255,255,0.95)" : "#000", margin: "0 0 14px", lineHeight: 1.04, opacity: visible ? 1 : 0, transform: visible ? "translateY(0)" : "translateY(24px)", transition: "all 0.8s cubic-bezier(0.16,1,0.3,1) 0.5s" }}>LLM costs today.</h2>
           <p style={{ fontSize: 16.5, color: dark ? "rgba(255,255,255,0.35)" : "rgba(0,0,0,0.5)", maxWidth: 380, margin: "0 auto 0", lineHeight: 1.55, opacity: visible ? 1 : 0, transition: "opacity 0.6s ease 0.65s" }}>No credit card. No SDK changes. Set up in 30 seconds.</p>
           <div style={{ height: 80 }} />
-          <div style={{ display: "flex", justifyContent: "center", gap: 14, opacity: visible ? 1 : 0, transform: visible ? "translateY(0) scale(1)" : "translateY(16px) scale(0.97)", transition: "all 0.7s cubic-bezier(0.16,1,0.3,1) 0.75s" }}>
+          <div className="cta-buttons" style={{ display: "flex", justifyContent: "center", gap: 14, opacity: visible ? 1 : 0, transform: visible ? "translateY(0) scale(1)" : "translateY(16px) scale(0.97)", transition: "all 0.7s cubic-bezier(0.16,1,0.3,1) 0.75s" }}>
             <span className="cta-primary" style={{ display: "inline-flex", alignItems: "center", gap: 10, padding: "17px 40px", borderRadius: 14, cursor: "pointer", background: dark ? "linear-gradient(180deg, #ffffff 0%, #f5f5f5 20%, #ebebeb 45%, #e0e0e0 70%, #d6d6d6 100%)" : "linear-gradient(180deg, #4a4a56 0%, #353540 18%, #252530 40%, #18181f 65%, #0a0a0e 100%)", color: dark ? "#0b0b0f" : "#fff", fontSize: 16.5, fontWeight: 620, boxShadow: dark ? "0 4px 12px rgba(255,255,255,0.2), 0 10px 40px rgba(255,255,255,0.12), inset 0 1px 0 rgba(255,255,255,0.5)" : "0 4px 12px rgba(0,0,0,0.15), 0 10px 40px rgba(0,0,0,0.1), inset 0 1px 0 rgba(255,255,255,0.15)" }}>Start for free <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" /></svg></span>
             <span style={{ display: "inline-flex", alignItems: "center", gap: 8, padding: "17px 36px", borderRadius: 14, cursor: "pointer", background: dark ? "rgba(255,255,255,0.05)" : "rgba(255,255,255,0.75)", border: `1px solid ${dark ? "rgba(255,255,255,0.07)" : "rgba(0,0,0,0.07)"}`, color: dark ? "rgba(255,255,255,0.55)" : "rgba(0,0,0,0.6)", fontSize: 16.5, fontWeight: 480, backdropFilter: "blur(8px)" }}>Talk to us</span>
           </div>
-          <div style={{ marginTop: 32, display: "flex", justifyContent: "center", gap: 28, fontFamily: "'IBM Plex Mono', monospace" }}>
+          <div className="cta-badges" style={{ marginTop: 32, display: "flex", justifyContent: "center", gap: 28, fontFamily: "'IBM Plex Mono', monospace" }}>
             {["Free tier","No credit card","SOC 2","< 5ms overhead"].map((t,i) => (
               <div key={i} style={{ display: "flex", alignItems: "center", gap: 6, opacity: visible ? 1 : 0, transition: `all 0.5s ease ${1+i*0.1}s` }}>
                 <svg width="12" height="12" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="10" stroke={dark ? "rgba(255,255,255,0.15)" : "rgba(0,0,0,0.15)"} strokeWidth="1.5" /><path d="M8 12l3 3 5-5" stroke={dark ? "rgba(255,255,255,0.4)" : "rgba(0,0,0,0.4)"} strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" style={{ strokeDasharray: 14, strokeDashoffset: visible ? 0 : 14, transition: `stroke-dashoffset 0.5s ease ${1.2+i*0.12}s` }} /></svg>

@@ -146,14 +146,19 @@ function DashboardZoom({ dark }) {
   const [progress, setProgress] = useState(0);
   useEffect(() => {
     const el = ref.current; if (!el) return;
-    const onScroll = () => {
+    let ticking = false;
+    const update = () => {
       const rect = el.getBoundingClientRect();
       const vh = window.innerHeight;
       const p = Math.max(0, Math.min(1, (vh - rect.top) / (vh * 0.7)));
       setProgress(p);
+      ticking = false;
+    };
+    const onScroll = () => {
+      if (!ticking) { ticking = true; requestAnimationFrame(update); }
     };
     window.addEventListener("scroll", onScroll, { passive: true });
-    onScroll();
+    update();
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
@@ -187,7 +192,7 @@ export function Hero({ dark, setDark }) {
   return (
     <div style={{ minHeight: "100vh", background: dark ? "#0b0b0f" : "#fafbfe", fontFamily: "'IBM Plex Sans', -apple-system, sans-serif", position: "relative", overflow: "hidden", transition: "background 0.4s" }}>
       {/* Icons constrained to viewport height so % positions stay within view */}
-      <div style={{ position: "absolute", inset: 0, height: "100vh", pointerEvents: "none" }}>
+      <div className="hero-icons" style={{ position: "absolute", inset: 0, height: "100vh", pointerEvents: "none" }}>
         {iconDefs.map(ic => (
           <FrostedIcon key={ic.i} x={ic.x} y={ic.y} size={ic.s || 56} rotate={ic.r} delay={ic.d} idx={ic.i} dark={dark}>
             <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d={ic.p} stroke={c(0.35)} strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round" /></svg>
@@ -195,12 +200,12 @@ export function Hero({ dark, setDark }) {
         ))}
       </div>
       <div style={{ height: 60 }} />
-      <div style={{ maxWidth: 1120, margin: "0 auto", padding: "56px 32px 0", textAlign: "center", position: "relative", zIndex: 3 }}>
+      <div className="hero-section" style={{ maxWidth: 1120, margin: "0 auto", padding: "56px 32px 0", textAlign: "center", position: "relative", zIndex: 3 }}>
         <div style={{ display: "inline-flex", alignItems: "center", gap: 8, padding: "6px 15px 6px 10px", borderRadius: 100, background: c(0.03), border: `1px solid ${c(0.06)}`, fontSize: 12, fontWeight: 450, color: c(0.4), fontFamily: "'IBM Plex Mono', monospace", marginBottom: 24, boxShadow: dark ? "0 2px 10px rgba(0,0,0,0.25)" : "0 2px 10px rgba(0,0,0,0.04)", opacity: 0, animation: "fi 0.7s ease-out 0.15s forwards" }}>
           <span style={{ width: 5, height: 5, borderRadius: "50%", background: c(0.3) }} />
           Semantic caching & pattern detection
         </div>
-        <h1 style={{ fontSize: 58, fontWeight: 680, lineHeight: 1.06, letterSpacing: "-0.04em", color: c(0.9), margin: "0 0 18px", maxWidth: 640, marginLeft: "auto", marginRight: "auto" }}>
+        <h1 className="hero-heading" style={{ fontSize: 58, fontWeight: 680, lineHeight: 1.06, letterSpacing: "-0.04em", color: c(0.9), margin: "0 0 18px", maxWidth: 640, marginLeft: "auto", marginRight: "auto" }}>
           {"Know what your LLM spend actually costs".split(" ").map((word, i) => (
             <span key={i} className="hero-word" style={{
               display: "inline-block", marginRight: "0.28em",
@@ -209,8 +214,8 @@ export function Hero({ dark, setDark }) {
             }}>{word}</span>
           ))}
         </h1>
-        <p style={{ fontSize: 16.5, lineHeight: 1.65, color: c(0.38), maxWidth: 450, margin: "0 auto 34px", fontWeight: 400, opacity: 0, animation: "heroFade 1s ease 1s forwards" }}>A proxy worker that turns raw LLM traffic into cost candles, trace waterfalls, and pattern-based savings. 5ms overhead.</p>
-        <div style={{ display: "flex", justifyContent: "center", gap: 14, marginBottom: 48, opacity: 0, animation: "heroFade 0.8s ease 1.2s forwards" }}>
+        <p className="hero-sub" style={{ fontSize: 16.5, lineHeight: 1.65, color: c(0.38), maxWidth: 450, margin: "0 auto 34px", fontWeight: 400, opacity: 0, animation: "heroFade 1s ease 1s forwards" }}>A proxy worker that turns raw LLM traffic into cost candles, trace waterfalls, and pattern-based savings. 5ms overhead.</p>
+        <div className="hero-buttons" style={{ display: "flex", justifyContent: "center", gap: 14, marginBottom: 48, opacity: 0, animation: "heroFade 0.8s ease 1.2s forwards" }}>
           <MagneticWrap strength={0.25}><span className="cta-primary" style={{ display: "inline-flex", alignItems: "center", gap: 9, padding: "15px 32px", borderRadius: 13, cursor: "pointer", background: dark ? "linear-gradient(180deg, #ffffff 0%, #f5f5f5 20%, #ebebeb 45%, #e0e0e0 70%, #d6d6d6 100%)" : "linear-gradient(180deg, #4a4a56 0%, #353540 18%, #252530 40%, #18181f 65%, #0a0a0e 100%)", color: dark ? "#0b0b0f" : "#fff", fontSize: 15.5, fontWeight: 580, boxShadow: dark ? "0 4px 12px rgba(255,255,255,0.2), 0 8px 30px rgba(255,255,255,0.15), 0 16px 60px rgba(255,255,255,0.08), inset 0 1px 0 rgba(255,255,255,0.5)" : "0 4px 12px rgba(0,0,0,0.15), 0 8px 30px rgba(0,0,0,0.12), 0 16px 50px rgba(0,0,0,0.06), inset 0 1px 0 rgba(255,255,255,0.15)" }}>
             Start for free <svg width="15" height="15" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" /></svg>
           </span></MagneticWrap>
