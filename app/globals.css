@@ -99,7 +99,7 @@ html { scroll-behavior: smooth; overflow-x: hidden; }
   .nav-bar { padding: 0 16px !important; }
 
   /* Hero */
-  .dashboard-preview { transform: scale(0.52) !important; transform-origin: top center !important; margin-bottom: -280px !important; }
+  .dashboard-preview { overflow: hidden !important; max-width: 100% !important; }
   .hero-heading { font-size: 34px !important; max-width: 100% !important; }
   .hero-sub { font-size: 15px !important; }
   .hero-buttons { gap: 10px !important; }
