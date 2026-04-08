@@ -51,11 +51,11 @@ export function Quickstart({ dark }) {
   const allRevealed = revealed >= snippet.lines.length;
   const handleCopy = () => { setCopied(true); setTimeout(() => setCopied(false), 2000); };
   return (
-    <section ref={ref} style={{ padding: "80px 32px 100px", maxWidth: 1020, margin: "0 auto", fontFamily: "'IBM Plex Sans', -apple-system, sans-serif" }}>
-      <div style={{ display: "flex", gap: 60, alignItems: "flex-start" }}>
-        <div style={{ flex: "0 0 340px", paddingTop: 20, opacity: visible?1:0, transform: visible?"translateX(0)":"translateX(-30px)", transition: "all 0.7s cubic-bezier(0.16,1,0.3,1) 0.1s" }}>
+    <section ref={ref} className="section-pad" style={{ padding: "80px 32px 100px", maxWidth: 1020, margin: "0 auto", fontFamily: "'IBM Plex Sans', -apple-system, sans-serif" }}>
+      <div className="qs-flex" style={{ display: "flex", gap: 60, alignItems: "flex-start" }}>
+        <div className="qs-sidebar" style={{ flex: "0 0 340px", paddingTop: 20, opacity: visible?1:0, transform: visible?"translateX(0)":"translateX(-30px)", transition: "all 0.7s cubic-bezier(0.16,1,0.3,1) 0.1s" }}>
           <div style={{ display: "inline-flex", padding: "5px 14px", borderRadius: 100, background: dark?"rgba(255,255,255,0.03)":"rgba(0,0,0,0.04)", border: `1px solid ${dark?"rgba(255,255,255,0.05)":"rgba(0,0,0,0.06)"}`, fontSize: 11.5, fontWeight: 500, color: dark?"rgba(255,255,255,0.35)":"rgba(0,0,0,0.5)", fontFamily: "'IBM Plex Mono', monospace", marginBottom: 22 }}>Quickstart</div>
-          <h2 style={{ fontSize: 36, fontWeight: 720, letterSpacing: "-0.04em", color: dark?"rgba(255,255,255,0.95)":"#000", margin: "0 0 16px", lineHeight: 1.1 }}>Two lines.<br />That's the whole setup.</h2>
+          <h2 className="section-heading" style={{ fontSize: 36, fontWeight: 720, letterSpacing: "-0.04em", color: dark?"rgba(255,255,255,0.95)":"#000", margin: "0 0 16px", lineHeight: 1.1 }}>Two lines.<br />That&apos;s the whole setup.</h2>
           <p style={{ fontSize: 15, color: dark?"rgba(255,255,255,0.38)":"rgba(0,0,0,0.5)", lineHeight: 1.6, margin: "0 0 28px" }}>Replace your provider's base URL with ours. Your API keys, models, and parameters stay exactly the same.</p>
           <div style={{ display: "flex", gap: 28, fontFamily: "'IBM Plex Mono', monospace" }}>
             {[{v:"2",l:"lines changed"},{v:"30s",l:"to integrate"},{v:"0",l:"dependencies"}].map((s,i)=>(<div key={i} style={{ opacity: visible?1:0, transform: visible?"translateY(0)":"translateY(10px)", transition: `all 0.5s cubic-bezier(0.16,1,0.3,1) ${0.6+i*0.12}s` }}><div style={{ fontSize: 20, fontWeight: 720, color: dark?"rgba(255,255,255,0.85)":"#000", textShadow: dark?"0 0 14px rgba(255,255,255,0.12)":"0 0 10px rgba(0,0,0,0.06)" }}>{s.v}</div><div style={{ fontSize: 9.5, color: dark?"rgba(255,255,255,0.22)":"rgba(0,0,0,0.32)", marginTop: 2 }}>{s.l}</div></div>))}

@@ -136,18 +136,18 @@ export function FeaturesBento({ dark }) {
   const tt = (d) => ({ fontSize: 15.5, fontWeight: 620, color: d?"rgba(255,255,255,0.95)":"rgba(0,0,0,0.85)", margin: "0 0 6px", letterSpacing: "-0.01em" });
   const td = (d) => ({ color: d?"rgba(255,255,255,0.45)":"rgba(0,0,0,0.6)", fontWeight: 400 });
   return (
-    <section style={{ padding: "100px 32px 80px", maxWidth: 1120, margin: "0 auto", fontFamily: "'IBM Plex Sans', -apple-system, sans-serif" }}>
+    <section className="section-pad" style={{ padding: "100px 32px 80px", maxWidth: 1120, margin: "0 auto", fontFamily: "'IBM Plex Sans', -apple-system, sans-serif" }}>
       <div style={{ textAlign: "center", marginBottom: 56 }}>
         <Reveal delay={0} y={16} scale={1} blur={4}><div style={{ display: "inline-flex", padding: "5px 14px", borderRadius: 100, background: dark?"rgba(255,255,255,0.03)":"rgba(0,0,0,0.04)", border: `1px solid ${dark?"rgba(255,255,255,0.05)":"rgba(0,0,0,0.06)"}`, fontSize: 11.5, fontWeight: 500, color: dark?"rgba(255,255,255,0.35)":"rgba(0,0,0,0.5)", fontFamily: "'IBM Plex Mono', monospace", marginBottom: 22 }}>Features</div></Reveal>
-        <Reveal delay={0.08} y={24} scale={1} blur={6}><h2 style={{ fontSize: 40, fontWeight: 700, letterSpacing: "-0.04em", color: dark?"rgba(255,255,255,0.95)":"#000", margin: "0 0 14px", lineHeight: 1.08 }}>Everything you need to<br />control LLM costs</h2></Reveal>
+        <Reveal delay={0.08} y={24} scale={1} blur={6}><h2 className="section-heading" style={{ fontSize: 40, fontWeight: 700, letterSpacing: "-0.04em", color: dark?"rgba(255,255,255,0.95)":"#000", margin: "0 0 14px", lineHeight: 1.08 }}>Everything you need to<br />control LLM costs</h2></Reveal>
         <Reveal delay={0.16} y={18} scale={1} blur={4}><p style={{ fontSize: 16, color: dark?"rgba(255,255,255,0.4)":"rgba(0,0,0,0.55)", maxWidth: 420, margin: "0 auto", lineHeight: 1.55 }}>From real-time monitoring to automatic optimization. No SDK changes required.</p></Reveal>
       </div>
-      <div style={{ display: "grid", gridTemplateColumns: "1.2fr 1fr 0.8fr", gap: 12, marginBottom: 12 }}>
+      <div className="bento-grid-3" style={{ display: "grid", gridTemplateColumns: "1.2fr 1fr 0.8fr", gap: 12, marginBottom: 12 }}>
         <BCard dark={dark} delay={0.1}><BVis dark={dark} style={{ minHeight: 180 }}><CandlesViz dark={dark} /></BVis><div style={{ padding: "18px 20px 20px" }}><h3 style={tt(dark)}><span style={{ fontWeight: 700 }}>Cost candles.</span>{" "}<span style={td(dark)}>OHLC charts, daily trends, per-user spend breakdowns.</span></h3></div></BCard>
         <BCard dark={dark} delay={0.2}><BVis dark={dark} style={{ minHeight: 180 }}><FTraceViz dark={dark} /></BVis><div style={{ padding: "18px 20px 20px" }}><h3 style={tt(dark)}><span style={{ fontWeight: 700 }}>Real-time traces.</span>{" "}<span style={td(dark)}>Full request waterfall. SSE-powered live view.</span></h3></div></BCard>
         <BCard dark={dark} delay={0.3}><BVis dark={dark} style={{ minHeight: 180 }}><FProxyViz dark={dark} /></BVis><div style={{ padding: "18px 20px 20px" }}><h3 style={tt(dark)}><span style={{ fontWeight: 700 }}>5ms overhead.</span>{" "}<span style={td(dark)}>Cloudflare Workers at the edge.</span></h3></div></BCard>
       </div>
-      <div style={{ display: "grid", gridTemplateColumns: "1.3fr 1fr", gap: 12, marginBottom: 12 }}>
+      <div className="bento-grid-2" style={{ display: "grid", gridTemplateColumns: "1.3fr 1fr", gap: 12, marginBottom: 12 }}>
         <BCard dark={dark} delay={0.45}><BVis dark={dark}><FPatternViz dark={dark} /></BVis><div style={{ padding: "18px 20px 20px" }}><h3 style={tt(dark)}><span style={{ fontWeight: 700 }}>Pattern detection.</span>{" "}<span style={td(dark)}>Identifies repeating prompts. Suggests cheaper models.</span></h3></div></BCard>
         <BCard dark={dark} delay={0.55}><BVis dark={dark}><FCacheViz dark={dark} /></BVis><div style={{ padding: "18px 20px 20px" }}><h3 style={tt(dark)}><span style={{ fontWeight: 700 }}>Semantic caching.</span>{" "}<span style={td(dark)}>Skip provider calls for similar prompts.</span></h3></div></BCard>
       </div>
