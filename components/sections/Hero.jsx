@@ -201,8 +201,8 @@ export function Hero({ dark, setDark }) {
       </div>
       <div style={{ height: 60 }} />
       <div className="hero-section" style={{ maxWidth: 1120, margin: "0 auto", padding: "56px 32px 0", textAlign: "center", position: "relative", zIndex: 3 }}>
-        <div style={{ display: "inline-flex", alignItems: "center", gap: 8, padding: "6px 15px 6px 10px", borderRadius: 100, background: c(0.03), border: `1px solid ${c(0.06)}`, fontSize: 12, fontWeight: 450, color: c(0.4), fontFamily: "'IBM Plex Mono', monospace", marginBottom: 24, boxShadow: dark ? "0 2px 10px rgba(0,0,0,0.25)" : "0 2px 10px rgba(0,0,0,0.04)", opacity: 0, animation: "fi 0.7s ease-out 0.15s forwards" }}>
-          <span style={{ width: 5, height: 5, borderRadius: "50%", background: c(0.3) }} />
+        <div style={{ display: "inline-flex", alignItems: "center", gap: 8, padding: "6px 15px 6px 10px", borderRadius: 100, background: c(0.03), border: `1px solid ${c(0.06)}`, fontSize: 12, fontWeight: 450, color: c(0.55), fontFamily: "'IBM Plex Mono', monospace", marginBottom: 24, boxShadow: dark ? "0 2px 10px rgba(0,0,0,0.25)" : "0 2px 10px rgba(0,0,0,0.04)", opacity: 0, animation: "fi 0.7s ease-out 0.15s forwards" }}>
+          <span style={{ width: 5, height: 5, borderRadius: "50%", background: c(0.5) }} />
           Semantic caching & pattern detection
         </div>
         <h1 className="hero-heading" style={{ fontSize: 58, fontWeight: 680, lineHeight: 1.06, letterSpacing: "-0.04em", color: c(0.9), margin: "0 0 18px", maxWidth: 640, marginLeft: "auto", marginRight: "auto" }}>
