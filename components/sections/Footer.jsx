@@ -116,10 +116,39 @@ export function Footer({ dark }) {
   const [ref, visible] = useInView(0.08);
 
   const linkCols = [
-    { title: "Product", links: ["Features", "Pricing", "Docs", "API Reference", "Changelog"] },
-    { title: "Resources", links: ["Blog", "Guides", "Status", "Community", "Support"] },
-    { title: "Company", links: ["About", "Careers", "Contact", "Partners"] },
-    { title: "Legal", links: ["Privacy", "Terms", "Security", "DPA"] },
+    { title: "Product", links: [
+      { label: "Features", href: "/features" },
+      { label: "Pricing", href: "/pricing" },
+      { label: "Docs", href: "/docs" },
+      { label: "API Reference", href: "/api-reference" },
+      { label: "Changelog", href: "/changelog" },
+    ]},
+    { title: "Resources", links: [
+      { label: "Blog", href: "/blog" },
+      { label: "Guides", href: "/guides" },
+      { label: "Status", href: "/status" },
+      { label: "Community", href: "/community" },
+      { label: "Support", href: "/support" },
+    ]},
+    { title: "Company", links: [
+      { label: "About", href: "/about" },
+      { label: "Careers", href: "/careers" },
+      { label: "Contact", href: "/contact" },
+      { label: "Partners", href: "/partners" },
+    ]},
+    { title: "Legal", links: [
+      { label: "Privacy", href: "/privacy" },
+      { label: "Terms", href: "/terms" },
+      { label: "Security", href: "/security" },
+      { label: "DPA", href: "/dpa" },
+    ]},
+  ];
+
+  const socials = [
+    { d: "M23 3a10.9 10.9 0 01-3.14 1.53A4.48 4.48 0 0012 7.5v1A10.66 10.66 0 013 4s-4 9 5 13a11.64 11.64 0 01-7 2c9 5 20 0 20-11.5a4.5 4.5 0 00-.08-.83A7.72 7.72 0 0023 3z", label: "X", href: "https://x.com/tokytics" },
+    { d: "M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 00-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0020 4.77 5.07 5.07 0 0019.91 1S18.73.65 16 2.48a13.38 13.38 0 00-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 005 4.77a5.44 5.44 0 00-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 009 18.13V22", label: "GitHub", href: "https://github.com/tokytics" },
+    { d: "M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-4 0v7h-4v-7a6 6 0 016-6zM2 9h4v12H2zM4 6a2 2 0 100-4 2 2 0 000 4z", label: "LinkedIn", href: "https://linkedin.com/company/tokytics" },
+    { d: "M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z", label: "Discord", href: "https://discord.gg/tokytics" },
   ];
 
   return (
@@ -147,10 +176,12 @@ export function Footer({ dark }) {
             <div key={ci} style={{ minWidth: 100, opacity: visible ? 1 : 0, transform: visible ? "translateY(0)" : "translateY(16px)", transition: `all 0.6s cubic-bezier(0.16,1,0.3,1) ${0.25 + ci * 0.08}s` }}>
               <div style={{ fontSize: 10, fontWeight: 600, textTransform: "uppercase", letterSpacing: "0.07em", color: dark ? "rgba(255,255,255,0.2)" : "rgba(0,0,0,0.25)", fontFamily: "'IBM Plex Mono', monospace", marginBottom: 16 }}>{col.title}</div>
               {col.links.map((link, li) => (
-                <div key={li} style={{ fontSize: 13, marginBottom: 10, cursor: "pointer", color: dark ? "rgba(255,255,255,0.32)" : "rgba(0,0,0,0.42)", transition: "color 0.2s ease" }}
-                  onMouseEnter={e => e.target.style.color = dark ? "rgba(255,255,255,0.7)" : "rgba(0,0,0,0.8)"}
-                  onMouseLeave={e => e.target.style.color = dark ? "rgba(255,255,255,0.32)" : "rgba(0,0,0,0.42)"}
-                >{link}</div>
+                <div key={li} style={{ marginBottom: 10 }}>
+                  <a href={link.href} style={{ fontSize: 13, textDecoration: "none", color: dark ? "rgba(255,255,255,0.32)" : "rgba(0,0,0,0.42)", transition: "color 0.2s ease" }}
+                    onMouseEnter={e => e.target.style.color = dark ? "rgba(255,255,255,0.7)" : "rgba(0,0,0,0.8)"}
+                    onMouseLeave={e => e.target.style.color = dark ? "rgba(255,255,255,0.32)" : "rgba(0,0,0,0.42)"}
+                  >{link.label}</a>
+                </div>
               ))}
             </div>
           ))}
@@ -165,18 +196,12 @@ export function Footer({ dark }) {
             © 2025 Tokytics Inc. All rights reserved.
           </span>
           <div style={{ display: "flex", gap: 12 }}>
-            {[
-              { d: "M23 3a10.9 10.9 0 01-3.14 1.53A4.48 4.48 0 0012 7.5v1A10.66 10.66 0 013 4s-4 9 5 13a11.64 11.64 0 01-7 2c9 5 20 0 20-11.5a4.5 4.5 0 00-.08-.83A7.72 7.72 0 0023 3z", label: "X" },
-              { d: "M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 00-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0020 4.77 5.07 5.07 0 0019.91 1S18.73.65 16 2.48a13.38 13.38 0 00-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 005 4.77a5.44 5.44 0 00-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 009 18.13V22", label: "GitHub" },
-              { d: "M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-4 0v7h-4v-7a6 6 0 016-6zM2 9h4v12H2zM4 6a2 2 0 100-4 2 2 0 000 4z", label: "LinkedIn" },
-              { d: "M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z", label: "Discord" },
-            ].map((icon, i) => (
-              <div key={i} className="ft-social" style={{
+            {socials.map((icon, i) => (
+              <a key={i} href={icon.href} target="_blank" rel="noopener noreferrer" aria-label={icon.label} className="ft-social" style={{
                 width: 32, height: 32, borderRadius: 8,
                 background: dark ? "rgba(255,255,255,0.02)" : "rgba(0,0,0,0.02)",
                 border: `1px solid ${dark ? "rgba(255,255,255,0.04)" : "rgba(0,0,0,0.04)"}`,
                 display: "flex", alignItems: "center", justifyContent: "center",
-                cursor: "pointer",
                 opacity: visible ? 1 : 0,
                 transform: visible ? "translateY(0)" : "translateY(8px)",
                 transition: `all 0.4s ease ${0.5 + i * 0.08}s`,
@@ -184,7 +209,7 @@ export function Footer({ dark }) {
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none">
                   <path d={icon.d} stroke={dark ? "rgba(255,255,255,0.25)" : "rgba(0,0,0,0.3)"} strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
                 </svg>
-              </div>
+              </a>
             ))}
           </div>
         </div>

@@ -1,5 +1,5 @@
 "use client";
-import { useInView, useCounterVis } from "../../hooks";
+import { useInView } from "../../hooks";
 
 // ─── Provider Constellation ───
 function ProviderConstellation({ dark, visible }) {
@@ -91,7 +91,6 @@ function ProviderConstellation({ dark, visible }) {
 // ─── CTA Section ───
 export function CTA({ dark }) {
   const [ref, visible] = useInView(0.12);
-  const reqCount = useCounterVis(10000, 1800, 1000, visible);
   return (
     <section ref={ref} style={{ padding: "60px 32px 80px", maxWidth: 1080, margin: "0 auto", fontFamily: "'IBM Plex Sans', -apple-system, sans-serif" }}>
       <div className="cta-inner" style={{
@@ -106,7 +105,7 @@ export function CTA({ dark }) {
         <div style={{ position: "relative", zIndex: 2, textAlign: "center" }}>
           <div style={{ display: "inline-flex", alignItems: "center", gap: 8, padding: "6px 16px", borderRadius: 100, marginBottom: 28, background: dark ? "rgba(255,255,255,0.04)" : "rgba(0,0,0,0.04)", border: `1px solid ${dark ? "rgba(255,255,255,0.06)" : "rgba(0,0,0,0.06)"}`, fontFamily: "'IBM Plex Mono', monospace", opacity: visible ? 1 : 0, transform: visible ? "translateY(0)" : "translateY(12px)", transition: "all 0.6s cubic-bezier(0.16,1,0.3,1) 0.3s" }}>
             <div style={{ width: 6, height: 6, borderRadius: "50%", background: dark ? "rgba(255,255,255,0.4)" : "rgba(0,0,0,0.4)", animation: visible ? "ctaPulse 2s infinite" : "none" }} />
-            <span style={{ fontSize: 11, color: dark ? "rgba(255,255,255,0.4)" : "rgba(0,0,0,0.5)" }}>Free tier: <span style={{ color: dark ? "rgba(255,255,255,0.7)" : "#000", fontWeight: 600 }}>{reqCount.toLocaleString()}</span> req/mo</span>
+            <span style={{ fontSize: 11, color: dark ? "rgba(255,255,255,0.4)" : "rgba(0,0,0,0.5)" }}>Free tier: <span style={{ color: dark ? "rgba(255,255,255,0.7)" : "#000", fontWeight: 600 }}>10,000</span> req/mo</span>
           </div>
           <h2 className="cta-heading" style={{ fontSize: 48, fontWeight: 760, letterSpacing: "-0.05em", color: dark ? "rgba(255,255,255,0.95)" : "#000", margin: "0 0 8px", lineHeight: 1.04, opacity: visible ? 1 : 0, transform: visible ? "translateY(0)" : "translateY(24px)", transition: "all 0.8s cubic-bezier(0.16,1,0.3,1) 0.4s" }}>Start saving on</h2>
           <h2 className="cta-heading" style={{ fontSize: 48, fontWeight: 760, letterSpacing: "-0.05em", color: dark ? "rgba(255,255,255,0.95)" : "#000", margin: "0 0 14px", lineHeight: 1.04, opacity: visible ? 1 : 0, transform: visible ? "translateY(0)" : "translateY(24px)", transition: "all 0.8s cubic-bezier(0.16,1,0.3,1) 0.5s" }}>LLM costs today.</h2>
