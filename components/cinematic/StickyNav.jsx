@@ -3,6 +3,12 @@ import { C } from "../../utils/colors";
 import { ThemeToggle } from "../ui/ThemeToggle";
 import { MagneticWrap } from "../ui/MagneticWrap";
 
+const NAV_LINKS = [
+  { label: "Features", href: "/features" },
+  { label: "Docs", href: "/docs" },
+  { label: "Pricing", href: "/pricing" },
+];
+
 export function StickyNav({ dark, setDark, scrolled }) {
   const c = C(dark);
   return (
@@ -22,18 +28,20 @@ export function StickyNav({ dark, setDark, scrolled }) {
         height: scrolled ? 52 : 60,
         transition: "height 0.4s cubic-bezier(0.16,1,0.3,1)",
       }}>
-        <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
+        <a href="/" aria-label="Tokytics home" style={{ display: "flex", alignItems: "center", gap: 10, textDecoration: "none" }}>
           <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><rect x="2" y="2" width="20" height="20" rx="5" stroke={c(0.18)} strokeWidth="1.2"/><path d="M16 16V10M12 16V6M8 16v-4" stroke={c(0.55)} strokeWidth="1.5" strokeLinecap="round"/></svg>
           <span style={{ fontSize: scrolled ? 15 : 16, fontWeight: 620, color: c(0.85), letterSpacing: "-0.01em", transition: "font-size 0.3s ease" }}>Tokytics</span>
-        </div>
+        </a>
         <div style={{ display: "flex", alignItems: "center", gap: 24 }}>
           <div className="nav-links" style={{ display: "flex", alignItems: "center", gap: 24 }}>
-            {["Features","Docs","Pricing"].map(l => <span key={l} style={{ fontSize: 13.5, color: c(0.38), fontWeight: 450, cursor: "pointer" }}>{l}</span>)}
+            {NAV_LINKS.map(l => (
+              <a key={l.label} href={l.href} style={{ fontSize: 13.5, color: c(0.38), fontWeight: 450, textDecoration: "none" }}>{l.label}</a>
+            ))}
             <div style={{ width: 1, height: 16, background: c(0.07) }} />
-            <MagneticWrap strength={0.2}><span style={{ fontSize: 13.5, color: c(0.5), padding: "8px 18px", borderRadius: 9, cursor: "pointer", border: `1px solid ${c(0.07)}`, background: dark ? "rgba(255,255,255,0.05)" : "rgba(255,255,255,0.85)" }}>Log in</span></MagneticWrap>
+            <MagneticWrap strength={0.2}><a href="/login" style={{ fontSize: 13.5, color: c(0.5), padding: "8px 18px", borderRadius: 9, textDecoration: "none", border: `1px solid ${c(0.07)}`, background: dark ? "rgba(255,255,255,0.05)" : "rgba(255,255,255,0.85)" }}>Log in</a></MagneticWrap>
           </div>
           <ThemeToggle dark={dark} setDark={setDark} />
-          <MagneticWrap strength={0.25}><span style={{ fontSize: 13.5, fontWeight: 580, padding: "8px 20px", borderRadius: 9, cursor: "pointer", background: dark ? "linear-gradient(180deg, #ffffff 0%, #f5f5f5 20%, #ebebeb 45%, #e0e0e0 70%, #d6d6d6 100%)" : "linear-gradient(180deg, #434350 0%, #2a2a32 30%, #18181e 65%, #0e0e12 100%)", color: dark ? "#0b0b0f" : "#fff", boxShadow: dark ? "0 4px 20px rgba(255,255,255,0.2), inset 0 1px 0 rgba(255,255,255,0.4)" : "0 4px 20px rgba(0,0,0,0.2), inset 0 1px 0 rgba(255,255,255,0.12)" }}>Get started</span></MagneticWrap>
+          <MagneticWrap strength={0.25}><a href="/signup" style={{ fontSize: 13.5, fontWeight: 580, padding: "8px 20px", borderRadius: 9, textDecoration: "none", background: dark ? "linear-gradient(180deg, #ffffff 0%, #f5f5f5 20%, #ebebeb 45%, #e0e0e0 70%, #d6d6d6 100%)" : "linear-gradient(180deg, #434350 0%, #2a2a32 30%, #18181e 65%, #0e0e12 100%)", color: dark ? "#0b0b0f" : "#fff", boxShadow: dark ? "0 4px 20px rgba(255,255,255,0.2), inset 0 1px 0 rgba(255,255,255,0.4)" : "0 4px 20px rgba(0,0,0,0.2), inset 0 1px 0 rgba(255,255,255,0.12)" }}>Get started</a></MagneticWrap>
         </div>
       </div>
     </nav>

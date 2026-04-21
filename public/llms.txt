@@ -1,0 +1,18 @@
+# Tokytics
+
+Tokytics is an LLM cost observability and proxy platform for tracking, controlling, and reducing AI spend across providers.
+
+## Key pages
+- [Overview](https://tokytics.com/)
+- [Quickstart](https://tokytics.com/docs/quickstart)
+- [LLM proxy](https://tokytics.com/features/llm-proxy)
+- [Semantic caching](https://tokytics.com/features/semantic-caching)
+- [Security](https://tokytics.com/security)
+- [Pricing](https://tokytics.com/pricing)
+
+## Best for
+- LLM cost tracking
+- LLM usage analytics
+- Semantic caching
+- Budget enforcement
+- Multi-provider AI proxy
